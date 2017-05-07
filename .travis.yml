@@ -38,10 +38,10 @@ after_success:
   - find /opt | grep Controls
   - sudo cp appdir/usr/lib/x86_64-linux-gnu/plasma-discover/* /usr/lib/x86_64-linux-gnu/ # FIXME; make ldd find it in a better way
   - sudo cp /usr/lib/x86_64-linux-gnu/pulseaudio/* /usr/lib/x86_64-linux-gnu/ # FIXME; make ldd find it in a better way
-  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs -qmldir=/opt/qt58/qml -qmldir=$(readlink -f .)
+  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs -qmldir=/opt/qt58/qml -qmldir=/opt/qt58/lib/x86_64-linux-gnu/qml -qmldir=$(readlink -f .)
   - mv appdir/usr/lib/x86_64-linux-gnu/plugins/discover appdir/usr/plugins/
   - ./linuxdeployqt-continuous-x86_64.AppImage --appimage-extract usr/bin/patchelf
   - squashfs-root/usr/bin/patchelf --set-rpath '$ORIGIN/../../lib'  appdir/usr/plugins/discover/kns-backend.so
-  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage -qmldir=/opt/qt58/qml -qmldir=$(readlink -f .)
+  - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage -qmldir=/opt/qt58/qml -qmldir=/opt/qt58/lib/x86_64-linux-gnu/qml -qmldir=$(readlink -f .)
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
   - curl --upload-file ./Discover*.AppImage https://transfer.sh/Discover-git.$(git rev-parse --short HEAD)-x86_64.AppImage
