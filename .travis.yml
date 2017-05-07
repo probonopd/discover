@@ -32,7 +32,7 @@ after_success:
   - wget -c "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage" 
   - chmod a+x linuxdeployqt*.AppImage
   - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
-  - export LD_LIBRARY_PATH=/opt/qt58/lib/x86_64-linux-gnu/
+  - export LD_LIBRARY_PATH=/opt/qt58/lib/:/opt/qt58/lib/x86_64-linux-gnu/
   - sudo cp appdir/usr/lib/x86_64-linux-gnu/plasma-discover/* /usr/lib/ # FIXME; make ldd find it in a better way
   - ldd ./appdir/usr/bin/plasma-discover
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs
