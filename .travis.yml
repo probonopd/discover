@@ -33,7 +33,8 @@ after_success:
   - chmod a+x linuxdeployqt*.AppImage
   - unset QTDIR; unset QT_PLUGIN_PATH ; unset LD_LIBRARY_PATH
   - export LD_LIBRARY_PATH=/opt/qt58/lib/:/opt/qt58/lib/x86_64-linux-gnu/
-  - sudo cp appdir/usr/lib/x86_64-linux-gnu/plasma-discover/* /usr/lib/ # FIXME; make ldd find it in a better way
+  - sudo cp appdir/usr/lib/x86_64-linux-gnu/plasma-discover/* /usr/lib/x86_64-linux-gnu/ # FIXME; make ldd find it in a better way
+  - sudo cp /usr/lib/x86_64-linux-gnu/pulseaudio/* /usr/lib/x86_64-linux-gnu/ # FIXME; make ldd find it in a better way
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -bundle-non-qt-libs
   - ./linuxdeployqt*.AppImage ./appdir/usr/share/applications/*.desktop -appimage
   - find ./appdir -executable -type f -exec ldd {} \; | grep " => /usr" | cut -d " " -f 2-3 | sort | uniq
