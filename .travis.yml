@@ -9,6 +9,7 @@ before_install:
     
 install: 
   - sudo apt-get -y install qt58base qt58tools qt58translations qt58x11extras qt58svg
+  - find /opt | grep "libQt5X11Extras.so.5"
   - source /opt/qt*/bin/qt*-env.sh
   - # Precompiled KF5
   - wget -c "https://github.com/chigraph/precompiled-kf5-linux/releases/download/precompiled/kf5-gcc6-linux64-release.tar.xz"
