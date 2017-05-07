@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get update -qq
     
 install: 
-  - sudo apt-get -y install qt58base qt58tools qt58translations qt58x11extras qt58svg libphonon4qt5-dev
+  - sudo apt-get -y install qt58base qt58tools qt58translations qt58x11extras qt58svg libphonon4qt5-dev libpulse0
   - find /opt | grep "libQt5X11Extras.so.5"
   - source /opt/qt*/bin/qt*-env.sh
   - # Precompiled KF5
